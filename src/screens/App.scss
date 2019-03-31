@@ -1,0 +1,25 @@
+.App {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover {
+  width: 100%;
+  height: auto;
+}
+
+.form {
+  width: 530px;
+  position: absolute;
+  top: 80%;
+  background-color: #f3ce56;
+  padding: 24px;
+
+  &__title {
+    margin-bottom: 10px;
+    font-family: "Ubuntu",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+  }
+}
