@@ -26,7 +26,6 @@ module.exports = function (webpackEnv) {
     optimization: {
       minimize: isProd,
       minimizer: [
-        // This is only used in production mode
         new TerserPlugin({
           terserOptions: {
             parse: { ecma: 8 },
@@ -125,17 +124,7 @@ module.exports = function (webpackEnv) {
               sideEffects: true,
             },
             {
-              test: /\.(woff(2)?|ttf|eot)$/,
-              use: [{
-                loader: 'file-loader',
-                options: {
-                  name: '[name].[ext]',
-                  outputPath: 'fonts/'
-                }
-              }]
-            },
-            {
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              test: /\.(jpg|png)$/,
               loader: require.resolve('file-loader'),
               options: {
                 name: 'assets/[name].[ext]',
@@ -205,20 +194,12 @@ module.exports = function (webpackEnv) {
         }
       })
     ].filter(Boolean),
-    node: {
-      module: 'empty',
-      dgram: 'empty',
-      dns: 'mock',
-      fs: 'empty',
-      net: 'empty',
-      tls: 'empty',
-      child_process: 'empty',
-    },
     performance: false,
     devServer: {
       contentBase: path.join(__dirname, 'build'),
       noInfo: true,
       port: 9000,
+      host: '127.0.0.1',
       hot: true,
       open: true,
       proxy: [{

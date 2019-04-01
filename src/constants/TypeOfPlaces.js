@@ -19,6 +19,10 @@ export default {
     color: '#ffa981',
     label: 'Place'
   },
+  z: {
+    color: '#ffa981',
+    label: 'Place'
+  },
   d: {
     color: '#70d58e',
     label: 'District'
