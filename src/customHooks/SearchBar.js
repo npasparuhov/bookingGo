@@ -34,13 +34,24 @@ export default () => {
     else changeMatches([], input);
   };
 
+  const handleOnBlur = ({ currentTarget }) => setTimeout(() => {
+    !currentTarget.contains(document.activeElement) && setIsOpen(false);
+  }, 0);
+
+  const handleSelect = data => {
+    changeValue(data);
+    oldValue = data;
+    setIsOpen(false);
+  };
+
   return {
     locationInput: {
       value,
       onChange: handleChange,
-      onBlur: () => setIsOpen(false),
       onFocus: () => setIsOpen(value.length > 1)
     },
+    onBlur: handleOnBlur,
+    onSelect: handleSelect,
     isOpen,
     matches,
     loading: value !== oldValue && value.length > 1

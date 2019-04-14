@@ -13,11 +13,12 @@ const Suggestion = ({
   name,
   placeType,
   country,
+  onSelect,
   region = null,
   city = null,
   isPopular }) =>
   (
-    <div className='search-bar__suggestions-item'>
+    <div className='search-bar__suggestions-item' onClick={() => onSelect(name)}>
       <span
         className='badge'
         style={{ backgroundColor: places[placeType.toLowerCase()].color }}>
@@ -39,6 +40,7 @@ Suggestion.propTypes = {
   region: PropTypes.string,
   city: PropTypes.string,
   isPopular: PropTypes.bool,
+  onSelect: PropTypes.func,
 };
 
 export default Suggestion;
